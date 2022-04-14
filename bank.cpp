@@ -8,73 +8,83 @@ public:
     int dowithdrawal()
     {
         int wd, a;
-        cout << "\n enter amount:";
+        cout << "\n Enter Amount:";
         cin >> a;
-        if (a >= 100 && a < (balance - 100))
+        if (a >= 100 && a <= (balance - 100))
         {
             wd = balance - a;
             balance = wd;
-            cout << "\n youre balance is:" << balance;
+            cout << "\n Total Balance:" << balance;
         }
         else
         {
-            cout << "\n sorry invalid balance....";
+            cout << "\n Sorry \n Invelid Balance In Your Account.";
         }
         return wd;
     }
-    int dodiposite()
+    int dodiposit()
     {
         int d, b;
-        cout << "\n enter amount:";
+        cout << "\n Enter Amount:";
         cin >> b;
         if (b <= 50000 && b >= 0)
         {
             d = balance + b;
-        balance = d;
-        cout << "\n youre balance is:" << balance;
         }
         else
         {
-            cout << "\n sorry amount less then 50000....";
+            cout << "\n Sorry\n Less Then 50000 Amount Diposit. ";
         }
+        balance = d;
+        cout << "\n Total Balance:" << balance;
+
         return d;
     }
-    int dochakbalance()
+    int docheackbalance()
     {
         int a;
         a = balance;
-        cout << "\n youre balance is:" << a;
+        cout << "\n Total Balance:" << a;
     }
 };
 int main()
 {
-    int x, balance = 10000, withdrawal, diposit, chak_balance;
-    bank do_withdrawal, do_diposite, do_chak_balance;
+    int x, z, balance = 10000, withdrawal, diposit, check_balance;
+    bank account;
 
-    cout << "\n total amount:" << balance;
-
-    cout << "\n1 withdrawal:";
-    cout << "\n2 diposit:";
-    cout << "\n3 chak_blance:";
-
-    cout << "\n enter your choise:";
-    cin >> x;
-
-    switch (x)
+    do
     {
-    case 1:
-        do_withdrawal.dowithdrawal();
-        break;
-    case 2:
-        do_diposite.dodiposite();
+        cout << "\n\n Total Amount:" << balance;
+        cout << "\n1 Withdrawal";
+        cout << "\n2 Diposit";
+        cout << "\n3 Check Balance";
+        cout << "\n0 Exit";
+        cout << "\n Enter Your Choise:";
+        cin >> x;
 
-        break;
-    case 3:
-        do_chak_balance.dochakbalance();
-
-        break;
-    default:
-        cout << "wrong choise";
-        break;
-    }
+        switch (x)
+        {
+        case 1:
+            account.dowithdrawal();
+            break;
+        case 2:
+            account.dodiposit();
+            break;
+        case 3:
+            account.docheackbalance();
+            break;
+        case 0:
+            break;
+        default:
+            cout << "Wrong Choise:";
+            break;
+        }
+        cout << "Continue for Bank Servis(Yes=1 / No=0)";
+        cin >> z;
+        if (z == 0)
+        {
+            x = 0;
+        }
+    } while (x != 0);
+    cout << "Thank you For Banking";
 }
